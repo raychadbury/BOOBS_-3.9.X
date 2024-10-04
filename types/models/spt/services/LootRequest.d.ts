@@ -1,11 +1,15 @@
-import { MinMax } from "../../common/MinMax";
+import { MinMax } from "@spt/models/common/MinMax";
 export interface LootRequest {
-    presetCount: MinMax;
+    weaponPresetCount: MinMax;
+    armorPresetCount: MinMax;
     itemCount: MinMax;
+    weaponCrateCount: MinMax;
     itemBlacklist: string[];
     itemTypeWhitelist: string[];
     /** key: item base type: value: max count */
     itemLimits: Record<string, number>;
     itemStackLimits: Record<string, MinMax>;
     armorLevelWhitelist: number[];
+    allowBossItems: boolean;
+    useRewarditemBlacklist?: boolean;
 }

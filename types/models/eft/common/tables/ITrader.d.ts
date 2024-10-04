@@ -1,10 +1,13 @@
-import { Item } from "./IItem";
+import { Item } from "@spt/models/eft/common/tables/IItem";
+import { DogtagExchangeSide } from "@spt/models/enums/DogtagExchangeSide";
+import { ITraderServiceModel } from "@spt/models/spt/services/ITraderServiceModel";
 export interface ITrader {
-    assort: ITraderAssort;
+    assort?: ITraderAssort;
     base: ITraderBase;
     dialogue?: Record<string, string[]>;
-    questassort: Record<string, Record<string, string>>;
+    questassort?: Record<string, Record<string, string>>;
     suits?: ISuit[];
+    services?: ITraderServiceModel[];
 }
 export interface ITraderBase {
     refreshTraderRagfairOffers: boolean;
@@ -76,15 +79,17 @@ export interface IBarterScheme {
     _tpl: string;
     onlyFunctional?: boolean;
     sptQuestLocked?: boolean;
+    level?: number;
+    side?: DogtagExchangeSide;
 }
 export interface ISuit {
     _id: string;
     tid: string;
     suiteId: string;
     isActive: boolean;
-    requirements: Requirements;
+    requirements: ISuitRequirements;
 }
-export interface Requirements {
+export interface ISuitRequirements {
     loyaltyLevel: number;
     profileLevel: number;
     standing: number;
